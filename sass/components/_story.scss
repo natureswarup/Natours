@@ -1,0 +1,67 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: rgba($color-white, 0.3);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+
+    float: left;
+
+    // this bends the border of the shape so then the text curves along it
+    // to use shape-outside, element must be floated and have a defined width and height
+    // to use the circle... the first number is defining the radius, so 50% will be half of the width and height of the element
+    -webkit-shape-outside: circle(10% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+
+    // this turns our square we made into a perfect circle
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+
+    // when an item is floated, it is better to use transform then using the margin property
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+  }
+
+  &__img {
+    height: 100%;
+
+    transform: translateX(-4rem) scale(1.2);
+    transition: transform 0.2s;
+  }
+
+  &__text {
+    transform: skewX(12deg); //to offset the skew made to the whole container
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    backface-visibility: hidden; //just in case the elements shakes after animation is complete
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%); // form brightness, a value below 100 will make it darker, higher will make it brighter
+  }
+}
