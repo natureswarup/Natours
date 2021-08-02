@@ -1,6 +1,5 @@
 body {
   font-family: "Lato", sans-serif;
-  padding: 2rem;
   font-weight: 400;
   line-height: 1.7;
   color: $color-grey-dark;
@@ -17,6 +16,11 @@ body {
     font-weight: 400;
     letter-spacing: 3.5rem;
     animation: moveInLeft 1s;
+
+    @include respond(phone) {
+      letter-spacing: 1rem;
+      font-size: 5rem;
+    }
   }
 
   &--sub {
@@ -26,6 +30,11 @@ body {
     letter-spacing: 1.7rem;
     animation: moveInRight 1s;
     margin-bottom: 4rem;
+
+    @include respond(phone) {
+      letter-spacing: 0.5rem;
+      // font-size: 5rem;
+    }
   }
 }
 
@@ -44,6 +53,14 @@ body {
   // webkit-background-clip takes the linear gradient and moves it to the text... then since we already stated a color for fonts above, we need to change it to color
   letter-spacing: 0.2rem;
   transition: all 0.2s;
+
+  @include respond(tab-port) {
+    font-size: 2.5rem;
+  }
+
+  @include respond(phone) {
+    font-size: 2rem;
+  }
 
   &:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);

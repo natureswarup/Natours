@@ -1,12 +1,19 @@
 .row {
   max-width: $grid-width; //1140px is the standard width of a column
-  //   background-color: #eee;
-  //   color: white;
   margin: 0 auto;
 
   // this statment is selecting everything but the last child
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
+
+    @include respond(tab-port) {
+      margin-bottom: $gutter-vertical-small;
+    }
+  }
+
+  @include respond(tab-port) {
+    max-width: 50rem;
+    padding: 0 3rem;
   }
 
   @include clearfix; //this is from the mixin page
@@ -19,6 +26,15 @@
 
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
+
+      @include respond(tab-port) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
 
